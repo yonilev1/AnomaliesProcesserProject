@@ -1,6 +1,6 @@
 using MongoDB.Bson.Serialization.Attributes;
 
-namespace Consumer.Models;
+namespace RewConsumer.Models;
 
 public class SensorData
 {
