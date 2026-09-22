@@ -31,5 +31,7 @@ public class DataConsumer : BackgroundService
             GroupId = "activity-group",
             AutoOffsetReset = AutoOffsetReset.Earliest
         };
+
+        _consumer = new ConsumerBuilder<Null, string>(config).Build();
     }
 }
