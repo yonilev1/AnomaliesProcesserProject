@@ -1,0 +1,75 @@
+# =========================
+# Environment & Secrets (קריטי לאבטחה)
+# =========================
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secret*.json
+appsettings.Development.json
+appsettings.Local.json
+
+# =========================
+# C# / .NET Core
+# =========================
+[Bb]in/
+[Oo]bj/
+TestResults/
+packages/
+*.nupkg
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+env/
+.pytest_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# =========================
+# Data, Logs & Temp Files (לפייפליין ונתונים)
+# =========================
+*.log
+*.sqlite3
+*.db
+temp/
+tmp/
+out/
+*.csv
+*.xlsx
+*.parquet
+
+# =========================
+# IDEs and Editors (סביבות פיתוח)
+# =========================
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+# JetBrains (PyCharm, Rider)
+.idea/
+*.iml
+
+# =========================
+# Operating System Files
+# =========================
+.DS_Store
+Thumbs.db
+*~
