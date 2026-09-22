@@ -1,8 +1,8 @@
-using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson.Serialization.Attributes;
 
-namespace RewConsumer.Models;
+namespace RewConsumer.Dto;
 
-public class SensorData
+public class SensorDataDto
 {
     [BsonElement("ObjectId")]
     public int Id { get; set; }
@@ -11,7 +11,7 @@ public class SensorData
     [BsonElement("source_id")]
     public string SourceId { get; set; } = string.Empty;
     [BsonElement("timestamp")]
-    public string Timestamp { get; set; } = string.Empty;
+    public DateTime Timestamp { get; set; }
     [BsonElement("value")]
-    public string Value { get; set; } = string.Empty;
+    public double Value { get; set; }
 }

@@ -58,7 +58,7 @@ public class DataConsumer : BackgroundService
                     using (var scope = _factory.CreateScope())
                     {
                         var handler = scope.ServiceProvider.GetRequiredService<DataHandler>();
-                        await handler.Handle(deserilizedData);
+                        await handler.HandleAsync(deserilizedData);
                     }
                     _logger.LogInformation($"Successfully procssed rew data from {deserilizedData.SourceId} to Mongo");
                 }
