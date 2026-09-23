@@ -3,6 +3,14 @@ using Microsoft.Extensions.Hosting;
 using MongoDB.Driver;
 using RewConsumer.Consumer;
 using RewConsumer.Handler;
+using Serilog;
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .WriteTo.File(
+    path: "/app/logs/project_logs.log",
+    outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} - {Level:u3} - {Message:lj}{NewLine}{Exception}"
+    ).CreateLogger();
 
 IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices((context, services) =>
@@ -18,3 +26,5 @@ IHost host = Host.CreateDefaultBuilder(args)
         services.AddHostedService<DataConsumer>();
 
     }).Build();
+
+host.Run();

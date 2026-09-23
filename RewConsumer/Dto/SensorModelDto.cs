@@ -1,11 +1,13 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace RewConsumer.Dto;
 
 public class SensorDataDto
 {
-    [BsonElement("ObjectId")]
-    public int Id { get; set; }
+    [BsonId]
+    [BsonRepresentation(BsonType.ObjectId)]
+    public string Id { get; set; }
     [BsonElement("event_id")]
     public string EventId { get; set; } = string.Empty;
     [BsonElement("source_id")]

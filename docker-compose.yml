@@ -47,6 +47,8 @@ services:
   producer:
     build: ./PythonProducer
     container_name: producer
+    environment:
+      - Kafka__BootstrapServer=kafka:9092
     depends_on:
       kafka:
         condition: service_started
@@ -58,9 +60,22 @@ services:
     image: mongo:8.3.11
     container_name: mongo
     ports:
-      -"27017:27017"
+      - "27017:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
 
-    
+  rew-consumer:
+    build: ./RewConsumer
+    container_name: rew-consumer
+    environment:
+      - Mongo__ConnectionString=mongodb://root:root@mongo:27017/
+      - Kafka__BootstrapServer=kafka:9092
+    depends_on:
+      mongo:
+        condition: service_started
+      kafka:
+        condition: service_started
+    restart: on-failure
+    volumes:
+      - ./logs:/app/logs

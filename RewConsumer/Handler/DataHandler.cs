@@ -3,7 +3,6 @@ using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
 using RewConsumer.Dto;
 using RewConsumer.Models;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace RewConsumer.Handler;
 
 
@@ -18,7 +17,7 @@ public class DataHandler
     {
         _client = client;
         _database = _client.GetDatabase("sensor_data");
-        _database.CreateCollection("raw_readings");
+        //_database.CreateCollection("raw_readings");
         _collection = _database.GetCollection<SensorDataDto>("raw_readings");
         _logger = logger;
     }

@@ -24,7 +24,7 @@ public class DataConsumer : BackgroundService
     {
         _logger = logger;
         _factory = factory;
-        _bootstrapServer = configuration["Kafka:BootstrapServers"] ?? "localhost:9092";
+        _bootstrapServer = configuration["Kafka:BootstrapServer"] ?? "localhost:9092";
         _topic = configuration["Kafka:Topic"] ?? "activity-readings";
 
         ConsumerConfig config = new ConsumerConfig
@@ -45,7 +45,7 @@ public class DataConsumer : BackgroundService
 
         try
         {
-            while(!stoppingToken.CanBeCanceled)
+            while(!stoppingToken.IsCancellationRequested)
             {
                 try
                 {
