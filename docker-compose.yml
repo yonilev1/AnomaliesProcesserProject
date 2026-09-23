@@ -79,3 +79,15 @@ services:
     restart: on-failure
     volumes:
       - ./logs:/app/logs
+
+  statistics:
+    build: ./StatisticsService
+    container_name: statistics
+    depends_on:
+      mongo:
+        condition: service_started
+    env_file:
+      - .env
+    volumes:
+      - ./logs:/app/logs
+      
